@@ -1,2 +1,2 @@
 # Dates
-Convert Dates between hebrew and gregorian 
+This library onverts dates between Hebrewand Gregorian 
