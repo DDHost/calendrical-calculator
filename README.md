@@ -1,3 +1,4 @@
+
 # Clendrical Calculator
 This library can calculate the Hebrew date by the Gregorian date that given and vise versa , can generates lists of Jewish holidays in given Gregorian month
 
@@ -62,7 +63,7 @@ Most formulas in the code are formulas from the book [calendrical calculations t
 | year | <code> number</code> |
 | month | <code> number</code> |
 
-*hebDateToGreg(year, month, day) ⇒ Array\<object\>*
+*hebDateToGreg(year, month) ⇒ Array\<object\>*
 
 **RETURN:**
 
@@ -71,5 +72,25 @@ Most formulas in the code are formulas from the book [calendrical calculations t
 		    name: String // Name of the holiday
 		    sdate: String // Gimatria start day
 		    edate: String // Gimatria end day
+		    len: Number // length of the holiday
+	    }
+    ]
+ 
+ **Get Jewish holidays and change the gimatria date to numbers**  
+    
+| Param | Type |
+| --- | --- |
+| year | <code> number</code> |
+| month | <code> number</code> |
+
+*jewHoliByGregFix(year, month) ⇒ Array\<object\>*
+
+**RETURN:**
+
+    [
+	    {
+		    name: String // Name of the holiday
+		    sdate: Number // gimatria in number
+		    len: Number // length of the holiday
 	    }
     ]
