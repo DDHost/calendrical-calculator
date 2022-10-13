@@ -34,7 +34,7 @@ const gregDateToHeb = (year, month, day) => Hebrew.fixedToheb(gregorian.gregToFi
  * Get jewish holidays by given month & year
  * @param {number} year Gregorian year
  * @param {number} month Gregorian month
- * @returns {Array<object>} holidays
+ * @returns {Array<object>} Holidays
  */
 const jewHoliByGreg = (year, month) => {
     // Length of the Gregorian month.
@@ -59,7 +59,23 @@ const jewHoliByGreg = (year, month) => {
     return holidays;
 };
 
-console.log(jewHoliByGreg(2022, 12));
+/**
+ * Get jewish holidays by given month & year
+ * And fixed the dates to Gregorian format.
+ * @param {number} year Gregorian year
+ * @param {number} month Gregorian month
+ * @returns {Array<object>} Holidays
+ */
+const jewHoliByGregFix = (year, month) => {
+    let holidays = jewHoliByGreg(year, month);
+    holidays.forEach((m) => {
+        m.forEach((d) => {
+            d.sdate = Hebrew.gimatriaToNumber(d.sdate);
+            delete d.edate;
+        });
+    });
+    return holidays;
+};
 
 // EXPORT
-module.exports = { jewHoliByGreg, gregDateToHeb, hebDateToGreg, gregYearToHebYear };
+module.exports = { jewHoliByGreg, gregDateToHeb, hebDateToGreg, gregYearToHebYear, jewHoliByGregFix };

@@ -34,31 +34,37 @@ const months = [
                 name: 'ערב פסח',
                 sdate: 'י"ד',
                 edate: 'י"ד',
+                len: 1,
             },
             {
                 name: 'פסח',
                 sdate: 'ט"ו',
                 edate: 'ט"ו',
+                len: 1,
             },
             {
                 name: 'פסח חול המועד',
                 sdate: 'ט"ז',
                 edate: 'כ',
+                len: 5,
             },
             {
                 name: 'פסח חג שני',
                 sdate: 'כ"א',
                 edate: 'כ"א',
+                len: 1,
             },
             {
                 name: 'אסרו חג',
                 sdate: 'כ"ב',
                 edate: 'כ"ב',
+                len: 1,
             },
             {
                 name: 'יום הזיכרון לשואה ולגבורה',
                 sdate: 'כ"ז',
                 edate: 'כ"ז',
+                len: 1,
                 delay: [
                     {
                         day: [0, 6], // saturday and sunday
@@ -76,6 +82,7 @@ const months = [
                 name: 'יום הזיכרון לחללי מערכות ישראל',
                 sdate: 'ד',
                 edate: 'ד',
+                len: 1,
                 delay: [
                     {
                         day: [4, 5], // thursday and frieday
@@ -91,6 +98,7 @@ const months = [
                 name: 'יום העצמאות',
                 sdate: 'ה',
                 edate: 'ה',
+                len: 1,
                 delay: [
                     {
                         day: [5, 6], // saturday and frieday
@@ -106,6 +114,7 @@ const months = [
                 name: 'ערב ל"ג בעומר',
                 sdate: 'י"ז',
                 edate: 'י"ז',
+                len: 1,
                 delay: [
                     {
                         day: [5], // friday
@@ -117,6 +126,7 @@ const months = [
                 name: 'ל"ג בעומר',
                 sdate: 'י"ח',
                 edate: 'י"ח',
+                len: 1,
                 delay: [
                     {
                         day: [6], // saturday
@@ -134,16 +144,19 @@ const months = [
                 name: 'ערב שבועות',
                 sdate: 'ה',
                 edate: 'ה',
+                len: 1,
             },
             {
                 name: 'שבועות',
                 sdate: 'ו',
                 edate: 'ו',
+                len: 1,
             },
             {
                 name: 'אסרו חג',
                 sdate: 'ז',
                 edate: 'ז',
+                len: 1,
             },
         ],
     },
@@ -155,6 +168,7 @@ const months = [
                 name: 'צום תמוז',
                 sdate: 'י"ז',
                 edate: 'י"ז',
+                len: 1,
                 delay: [
                     {
                         day: [6], // saturday
@@ -172,6 +186,7 @@ const months = [
                 name: 'תשעה באב',
                 sdate: 'ט',
                 edate: 'ט',
+                len: 1,
                 delay: [
                     {
                         day: [6], // saturday
@@ -183,6 +198,7 @@ const months = [
                 name: 'טו באב',
                 sdate: 'ט"ו',
                 edate: 'ט"ו',
+                len: 1,
             },
         ],
     },
@@ -194,6 +210,7 @@ const months = [
                 name: 'ערב ראש השנה',
                 sdate: 'כ"ט',
                 edate: 'כ"ט',
+                len: 1,
             },
         ],
     },
@@ -205,11 +222,13 @@ const months = [
                 name: 'ראש השנה',
                 sdate: 'א',
                 edate: 'ב',
+                len: 2,
             },
             {
                 name: 'צום גדליה',
                 sdate: 'ג',
                 edate: 'ג',
+                len: 1,
                 delay: [
                     {
                         day: [6], // thursday
@@ -221,36 +240,43 @@ const months = [
                 name: 'יום כיפור',
                 sdate: 'ט',
                 edate: 'י',
+                len: 1,
             },
             {
                 name: 'ערב סוכות',
                 sdate: 'י"ד',
                 edate: 'י"ד',
+                len: 1,
             },
             {
                 name: 'סוכות',
                 sdate: 'ט"ו',
                 edate: 'ט"ו',
+                len: 1,
             },
             {
                 name: 'חול המועד',
                 sdate: 'ט"ז',
                 edate: 'כ',
+                len: 5,
             },
             {
                 name: 'הושענא רבה',
                 sdate: 'כ"א',
                 edate: 'כ"א',
+                len: 1,
             },
             {
                 name: 'שמחת תורה',
                 sdate: 'כ"ב',
                 edate: 'כ"ב',
+                len: 1,
             },
             {
                 name: 'אסרו חג',
                 sdate: 'כ"ג',
                 edate: 'כ"ג',
+                len: 1,
             },
         ],
     },
@@ -267,36 +293,43 @@ const months = [
                 name: 'חנוכה נר ראשון',
                 sdate: 'כ"ד',
                 edate: 'כ"ד',
+                len: 1,
             },
             {
                 name: 'חנוכה נר שני',
                 sdate: 'כ"ה',
                 edate: 'כ"ה',
+                len: 1,
             },
             {
                 name: 'חנוכה נר שלישי',
                 sdate: 'כ"ו',
                 edate: 'כ"ו',
+                len: 1,
             },
             {
                 name: 'חנוכה נר רביעי',
                 sdate: 'כ"ז',
                 edate: 'כ"ז',
+                len: 1,
             },
             {
                 name: 'חנוכה נר חמישי',
                 sdate: 'כ"ח',
                 edate: 'כ"ח',
+                len: 1,
             },
             {
                 name: 'חנוכה נר שישי',
                 sdate: 'כ"ט',
                 edate: 'כ"ט',
+                len: 1,
             },
             {
                 name: 'חנוכה נר שביעי',
                 sdate: 'ל',
                 edate: 'ל',
+                len: 1,
             },
         ],
     },
@@ -308,16 +341,19 @@ const months = [
                 name: 'חנוכה נר שמיני',
                 sdate: 'א',
                 edate: 'א',
+                len: 1,
             },
             {
                 name: 'חנוכה',
                 sdate: 'ב',
                 edate: 'ב',
+                len: 1,
             },
             {
                 name: 'צום עשרה בטבת',
                 sdate: 'י',
                 edate: 'י',
+                len: 1,
                 delay: [
                     {
                         day: [6], // saturday
@@ -335,6 +371,7 @@ const months = [
                 name: 'טו בשבט',
                 sdate: 'ט"ו',
                 edate: 'ט"ו',
+                len: 1,
             },
         ],
     },
@@ -351,6 +388,7 @@ const months = [
                 name: 'תענית אסתר',
                 sdate: 'י"ג',
                 edate: 'י"ג',
+                len: 1,
                 delay: [
                     {
                         day: [6, 5], // saturday and frieday
@@ -362,11 +400,13 @@ const months = [
                 name: 'פורים',
                 sdate: 'י"ד',
                 edate: 'י"ד',
+                len: 1,
             },
             {
                 name: 'שושן פורים',
                 sdate: 'ט"ו',
                 edate: 'ט"ו',
+                len: 1,
             },
         ],
     },
