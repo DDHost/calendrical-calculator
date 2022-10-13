@@ -8,6 +8,7 @@ Most formulas used in the code are formulas from the book "calendrical calculati
 ## Functions
 
 ### Convert Hebrew date to Gregorian  date
+
 | Param | Type |
 | --- | --- |
 | year | <code> number</code>|
@@ -24,7 +25,9 @@ Most formulas used in the code are formulas from the book "calendrical calculati
 	    day: Number
     }
 
+---
 ### Convert Gregorian  date to Hebrew date
+
 | Param | Type |
 | --- | --- |
 | year | <code> number</code>|
@@ -41,15 +44,19 @@ Most formulas used in the code are formulas from the book "calendrical calculati
 	    month: Number
 	    day: Number
     }
-
+    
+---
 ### Convert Gregorian year to Hebrew year
+
 | Param | Type |
 | --- | --- |
 | year | number |
 
 *gregYearToHebYear(year) ⇒ number*
 
+---
 ### Get Jewish holidays
+
 | Param | Type |
 | --- | --- |
 | year | <code> number</code> |
