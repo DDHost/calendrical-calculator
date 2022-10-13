@@ -10,9 +10,9 @@ Most formulas used in the code are formulas from the book "calendrical calculati
 ### Convert Hebrew date to Gregorian  date
 | Param | Type |
 | --- | --- |
-| year | number |
-| month | number |
-| day | number |
+| year | <code> number</code>|
+| month | <code> number</code>|
+| day | <code> number</code>|
 
 *hebDateToGreg(year, month, day) ⇒ object*
 
@@ -27,9 +27,9 @@ Most formulas used in the code are formulas from the book "calendrical calculati
 ### Convert Gregorian  date to Hebrew date
 | Param | Type |
 | --- | --- |
-| year | number |
-| month | number |
-| day | number |
+| year | <code> number</code>|
+| month | <code> number</code>|
+| day | <code> number</code>|
 
 *gregDateToHeb(year, month, day) ⇒ object*
 
@@ -52,8 +52,8 @@ Most formulas used in the code are formulas from the book "calendrical calculati
 ### Get Jewish holidays
 | Param | Type |
 | --- | --- |
-| year | number |
-| month | number |
+| year | <code> number</code> |
+| month | <code> number</code> |
 
 *hebDateToGreg(year, month, day) ⇒ Array\<object\>*
 
