@@ -2,7 +2,7 @@
 This library can calculate the Hebrew date by the Gregorian date that given and vise versa , can generates lists of Jewish holidays in given Gregorian month
 
 Clendrical Calculator was created in 2021 and programed in javasciprt, but it didn't work efficnlry then rewite it with better functions.
-Most formulas used in the code are formulas from the book "calendrical calculations the ultimate edition", written by Nachum Dershowitz and Edward M. Reingold.
+Most formulas used in the code are formulas from the book [calendrical calculations the ultimate edition](https://www.amazon.com/Calendrical-Calculations-Ultimate-Edward-Reingold/dp/1107683165), written by Nachum Dershowitz and Edward M. Reingold.
 
 
 ## Functions
@@ -50,7 +50,7 @@ Most formulas used in the code are formulas from the book "calendrical calculati
 
 | Param | Type |
 | --- | --- |
-| year | number |
+| year | <code> number</code>|
 
 *gregYearToHebYear(year) ⇒ number*
 
@@ -73,9 +73,3 @@ Most formulas used in the code are formulas from the book "calendrical calculati
 		    edate: String // Gimatria end day
 	    }
     ]
-
-
-
-
-
-
