@@ -9,7 +9,7 @@ Most formulas in the code are formulas from the book [calendrical calculations t
 
 ## Functions
 
-### Convert Hebrew date to Gregorian  date
+### Convert Hebrew date to Gregorian date
 
 | Param | Type |
 | --- | --- |
@@ -28,7 +28,7 @@ Most formulas in the code are formulas from the book [calendrical calculations t
     }
 
 ---
-### Convert Gregorian  date to Hebrew date
+### Convert Gregorian date to Hebrew date
 
 | Param | Type |
 | --- | --- |
