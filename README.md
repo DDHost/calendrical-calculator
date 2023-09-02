@@ -5,7 +5,7 @@ This library can calculate the Hebrew date by the Gregorian date that given and 
 Clendrical Calculator was created in 2021 and programed in javasciprt but didn't release it until october 13 2022.
 Most formulas in the code are formulas from the book [calendrical calculations the ultimate edition](https://www.amazon.com/Calendrical-Calculations-Ultimate-Edward-Reingold/dp/1107683165), written by Nachum Dershowitz and Edward M. Reingold.
 
-[test](###Get-Jewish-holidays)
+[test](#Get-Jewish-holidays)
 
 ## Functions
 
