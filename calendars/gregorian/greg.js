@@ -73,4 +73,4 @@ const fixedToGreg = (RT) => {
     return { year: year, month: month, day: day };
 };
 
-module.exports = { fixedToGreg, gregToFixed };
+export { fixedToGreg, gregToFixed };

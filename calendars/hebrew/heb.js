@@ -1,6 +1,6 @@
 'use strict';
 
-const hebData = require('./data.js');
+import * as hebData from './data.js';
 
 // Hebrew month and thier month number
 const NISAN = 1,
@@ -73,7 +73,19 @@ const partsToHourse = (p) => p / 1080;
  * @param {String} g Gimatria
  * @returns {number} Gimatria number value
  */
-const gimatriaToNumber = (g) => g.split('"').reduce((o, n) => o + hebData.gimatria[n], 0);
+const gimatriaToNumber = (g) => g.split('').reduce((o, n) => o + hebData.gimatria[n] || 0, 0);
+
+/**
+ * Convert number  to gimatria.
+ * @param {number} n number
+ * @returns {String} Gimatria value
+ */
+const numberToGimatria = (n) => {
+    const digits = n.toString().split('');
+    // Convert each digit to its corresponding Hebrew letter
+    const gematria = digits.map((digit) => hebData.hebrewAlphabet[parseInt(digit) - 1]).join('');
+    return gematria;
+};
 
 /**
  * check if the year is a leap or not
@@ -148,7 +160,7 @@ const totalLeapYears = (year) => Math.floor((year - 1) / 19) * 7 + Math.floor(((
  * @param {number} month  Hebrew year
  * @returns {number} elapsed month
  */
-const monthElapsed = (year, month) => month - TISHRI + 0.05263157894 * (235 * year - 234);
+const monthElapsed = (year, month) => 7 - TISHRI + divisionFloor(235 * year - 234, 19);
 
 const MOLAD = (year, month) => {
     if (month < 7) year += 1;
@@ -161,8 +173,8 @@ const MOLAD = (year, month) => {
  * @returns {number} elapsed days
  */
 const hebElapsedDays = (year) => {
-    const days = (year) => {
-        const mEla = Math.floor(monthElapsed(year, 7));
+    const days = (year, f) => {
+        const mEla = monthElapsed(year, 7);
         const pEla = 204 + 793 * (mEla % 1080);
         const hEla = 11 + 12 * mEla + 793 * divisionFloor(mEla, 1080) + divisionFloor(pEla, 1080);
 
@@ -174,7 +186,7 @@ const hebElapsedDays = (year) => {
     };
 
     const ny0 = days(year - 1);
-    const ny1 = days(year);
+    const ny1 = days(year, true);
     const ny2 = days(year + 1);
 
     let fix = 0;
@@ -185,7 +197,7 @@ const hebElapsedDays = (year) => {
 };
 
 /**
- *
+ * Get the R.D. date of the New Year
  * @param {number} year Hebrew year
  * @returns {number}
  */
@@ -196,7 +208,7 @@ const hebNewYear = (year) => hEPOCH + hebElapsedDays(year);
  * @param {number} year Hebrew year
  * @returns {number} total days
  */
-const daysInhYear = (year) => hebNewYear(year + 1) - hebNewYear(year);
+const daysInhYear = (year) => hebElapsedDays(year + 1) - hebElapsedDays(year);
 
 /**
  * Check if long Chechvan
@@ -217,6 +229,7 @@ const shortKislev = (year) => {
     let days = daysInhYear(year);
     return days === 353 || days === 383;
 };
+shortKislev(5784);
 
 /**
  * Get the length of month
@@ -279,41 +292,47 @@ const fixedToheb = (RT) => {
  * @returns {object}
  */
 const getHolidays = (year, month) => {
-    let months = [...hebData.months];
-    if ((month === TEVET || month === KISLEV) && shortKislev(year)) {
-        months[KISLEV].holidays.splice(6, 1); // renove ner 7
+    let holidays = [
+        ...hebData.months[month - 1].holidays.map((h) => {
+            return { ...h };
+        }),
+    ];
 
-        months[TEVET].holidays = [
-            {
-                name: 'חנוכה נר שביעי',
-                sdate: 'א',
-                edate: 'א',
-            },
-            {
-                name: 'חנוכה נר שמיני',
-                sdate: 'ב',
-                edate: 'ב',
-            },
-            {
-                name: 'חנוכה',
-                sdate: 'ג',
-                edate: 'ג',
-            },
-            {
-                name: 'צום עשרה בטבת',
-                sdate: 'י',
-                edate: 'י',
-                delay: [
-                    {
-                        day: [6], // saturday
-                        add: 1,
-                    },
-                ],
-            },
-        ];
+    if ((month === TEVET || month === KISLEV) && shortKislev(year)) {
+        if (month === KISLEV) holidays.splice(6, 1); // renove ner 7
+        else {
+            holidays = [
+                {
+                    name: 'חנוכה נר שביעי',
+                    sdate: 'א',
+                    edate: 'א',
+                },
+                {
+                    name: 'חנוכה נר שמיני',
+                    sdate: 'ב',
+                    edate: 'ב',
+                },
+                {
+                    name: 'חנוכה',
+                    sdate: 'ג',
+                    edate: 'ג',
+                },
+                {
+                    name: 'צום עשרה בטבת',
+                    sdate: 'י',
+                    edate: 'י',
+                    delay: [
+                        {
+                            day: [6], // saturday
+                            add: 1,
+                        },
+                    ],
+                },
+            ];
+        }
     }
 
-    return months[month - 1].holidays;
+    return holidays;
 };
 
-module.exports = { fixedToheb, hebToFixed, lastDayOfMonth, getHolidays, gimatriaToNumber };
+export { fixedToheb, hebToFixed, lastDayOfMonth, getHolidays, gimatriaToNumber, numberToGimatria };

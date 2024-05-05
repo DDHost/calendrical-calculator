@@ -1,5 +1,35 @@
 'user strict';
 
+const hebrewAlphabet = [
+    'א',
+    'ב',
+    'ג',
+    'ד',
+    'ה',
+    'ו',
+    'ז',
+    'ח',
+    'ט',
+    'י',
+    'כ',
+    'ך',
+    'ל',
+    'מ',
+    'ם',
+    'נ',
+    'ן',
+    'ס',
+    'ע',
+    'פ',
+    'ף',
+    'צ',
+    'ץ',
+    'ק',
+    'ר',
+    'ש',
+    'ת',
+];
+
 const gimatria = {
     א: 1,
     ב: 2,
@@ -28,6 +58,7 @@ const gimatria = {
 const months = [
     {
         name: 'nisan',
+        number: 1,
         len: 30,
         holidays: [
             {
@@ -43,10 +74,10 @@ const months = [
                 len: 1,
             },
             {
-                name: 'פסח חול המועד',
-                sdate: 'ט"ז',
+                name: 'ערב פסח חג שני',
+                sdate: 'כ',
                 edate: 'כ',
-                len: 5,
+                len: 1,
             },
             {
                 name: 'פסח חג שני',
@@ -54,13 +85,13 @@ const months = [
                 edate: 'כ"א',
                 len: 1,
             },
-            {
+            /*             {
                 name: 'אסרו חג',
                 sdate: 'כ"ב',
                 edate: 'כ"ב',
                 len: 1,
-            },
-            {
+            }, */
+            /*             {
                 name: 'יום הזיכרון לשואה ולגבורה',
                 sdate: 'כ"ז',
                 edate: 'כ"ז',
@@ -71,11 +102,12 @@ const months = [
                         add: 1,
                     },
                 ],
-            },
+            }, */
         ],
     },
     {
         name: 'iyyar',
+        number: 2,
         len: 29,
         holidays: [
             {
@@ -138,6 +170,7 @@ const months = [
     },
     {
         name: 'sivan',
+        number: 3,
         len: 30,
         holidays: [
             {
@@ -152,19 +185,20 @@ const months = [
                 edate: 'ו',
                 len: 1,
             },
-            {
+            /*             {
                 name: 'אסרו חג',
                 sdate: 'ז',
                 edate: 'ז',
                 len: 1,
-            },
+            }, */
         ],
     },
     {
         name: 'tammuz',
+        number: 4,
         len: 29,
         holidays: [
-            {
+            /*             {
                 name: 'צום תמוז',
                 sdate: 'י"ז',
                 edate: 'י"ז',
@@ -175,11 +209,12 @@ const months = [
                         add: 1,
                     },
                 ],
-            },
+            }, */
         ],
     },
     {
         name: 'av',
+        number: 5,
         len: 30,
         holidays: [
             {
@@ -204,6 +239,7 @@ const months = [
     },
     {
         name: 'elul',
+        number: 6,
         len: 29,
         holidays: [
             {
@@ -216,6 +252,7 @@ const months = [
     },
     {
         name: 'tishri',
+        number: 7,
         len: 30,
         holidays: [
             {
@@ -224,7 +261,7 @@ const months = [
                 edate: 'ב',
                 len: 2,
             },
-            {
+            /*             {
                 name: 'צום גדליה',
                 sdate: 'ג',
                 edate: 'ג',
@@ -235,7 +272,7 @@ const months = [
                         add: 1,
                     },
                 ],
-            },
+            }, */
             {
                 name: 'יום כיפור',
                 sdate: 'ט',
@@ -254,12 +291,12 @@ const months = [
                 edate: 'ט"ו',
                 len: 1,
             },
-            {
+            /*             {
                 name: 'חול המועד',
                 sdate: 'ט"ז',
                 edate: 'כ',
                 len: 5,
-            },
+            }, */
             {
                 name: 'הושענא רבה',
                 sdate: 'כ"א',
@@ -272,21 +309,23 @@ const months = [
                 edate: 'כ"ב',
                 len: 1,
             },
-            {
+            /*             {
                 name: 'אסרו חג',
                 sdate: 'כ"ג',
                 edate: 'כ"ג',
                 len: 1,
-            },
+            }, */
         ],
     },
     {
         name: 'cheshvan',
+        number: 8,
         len: 29, // Depands on overall length of the hebrew year, it can be 29 or 30
         holidays: [],
     },
     {
         name: 'kislev',
+        number: 9,
         len: 29, // Depands on overall length of the hebrew year, it can be 29 or 30
         holidays: [
             {
@@ -335,6 +374,7 @@ const months = [
     },
     {
         name: 'tevet',
+        number: 10,
         len: 29,
         holidays: [
             {
@@ -349,7 +389,7 @@ const months = [
                 edate: 'ב',
                 len: 1,
             },
-            {
+            /*             {
                 name: 'צום עשרה בטבת',
                 sdate: 'י',
                 edate: 'י',
@@ -360,11 +400,12 @@ const months = [
                         add: 1,
                     },
                 ],
-            },
+            }, */
         ],
     },
     {
         name: 'shevat',
+        number: 11,
         len: 30,
         holidays: [
             {
@@ -377,11 +418,13 @@ const months = [
     },
     {
         name: 'adar',
+        number: 12,
         len: 30, // if common 29 and if leap is 30
         holidays: [],
     },
     {
         name: 'adarii',
+        number: 13,
         len: 29,
         holidays: [
             {
@@ -412,4 +455,4 @@ const months = [
     },
 ];
 
-module.exports = { months, gimatria };
+export { months, gimatria, hebrewAlphabet };
