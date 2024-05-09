@@ -73,7 +73,7 @@ const partsToHourse = (p) => p / 1080;
  * @param {String} g Gimatria
  * @returns {number} Gimatria number value
  */
-const gimatriaToNumber = (g) => g.split('').reduce((o, n) => o + hebData.gimatria[n] || 0, 0);
+const gimatriaToNumber = (g) => g.split('').reduce((o, n) => o + (hebData.gimatria[n] || 0), 0);
 
 /**
  * Convert number  to gimatria.
