@@ -18,7 +18,7 @@ The length of the hebrew year is changing year to year and depands on where rosh
 | Tammuz   | 4     | 29          |                                                                                       |
 | Av       | 5     | 30          |                                                                                       |
 | Elul     | 6     | 29          |                                                                                       |
-| Tishrei  | 7     | 30          | is the first month of the civil year                                                  |
+| Tishrei  | 7     | 30          | Is the first month of the civil year                                                  |
 | Cheshvan | 8     | 29 / 30     | Depands on the langth of the year if it is 355 or 385 days then it 30 otherwise is 29 |
 | Kislev   | 9     | 29 / 30     | Depands on the langth of the year if it is 353 or 383 days then it 29 otherwise is 30 |
 | Tevet    | 10    | 29          |                                                                                       |
