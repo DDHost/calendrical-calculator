@@ -135,6 +135,7 @@ const elapsedDays = (hYear) => {
  * @returns {number} Rata Die
  */
 const hebToFixed = (year, month, day) => {
+    // Fix the missing days
     if (month < TISHRI) {
         for (let m = TISHRI; m <= totalMonthInYear(year); m++) {
             day += lastDayOfMonth(year, m);

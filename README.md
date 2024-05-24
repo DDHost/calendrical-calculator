@@ -47,6 +47,31 @@ Clendrical Calculator was created in 2021 and programed in javasciprt but didn't
 <dd><p>Converts gematria to his number value.</p>
 </dd>
 
+## Short explanion
+
+### Month
+
+The length of the hebrew year is changing year to year and depands on where rosh hashana(when the new year start, tishri 1) and also is it leap or not.
+
+| Name     | Order | Days Length | Description                                                                           |
+| -------- | ----- | ----------- | ------------------------------------------------------------------------------------- |
+| Nissan   | 1     | 30          |                                                                                       |
+| Iyyar    | 2     | 29          |                                                                                       |
+| Sivan    | 3     | 30          |                                                                                       |
+| Tammuz   | 4     | 29          |                                                                                       |
+| Av       | 5     | 30          |                                                                                       |
+| Elul     | 6     | 29          |                                                                                       |
+| Tishrei  | 7     | 30          | is the first month of the civil year                                                  |
+| Cheshvan | 8     | 29 / 30     | Depands on the langth of the year if it is 355 or 385 days then it 30 otherwise is 29 |
+| Kislev   | 9     | 29 / 30     | Depands on the langth of the year if it is 353 or 383 days then it 29 otherwise is 30 |
+| Tevet    | 10    | 29          |                                                                                       |
+| Sh'vat   | 11    | 30          |                                                                                       |
+| Adar I   | 12    | 29          |                                                                                       |
+| Adar II  | 13    | 30          | Adar ii only exist if the year is leap                                                |
+
+To convert the Hebrew date to the Gregorian date and vice versa, you must first convert the date to Rata Die fixed days and then to the desired Calendrical date.
+The implantation of the conversion Hebrew date to R.D. is done by calculating how many days have passed from the first molad + Hebrew EPOCH = R.D. -1373427 (Monday, September 7, –3760 in Gregorian) to the desired year.
+
 <a name="gregYearToHebYear"></a>
 
 ## gregYearToHebYear(year) ⇒ <code>number</code>
@@ -59,7 +84,7 @@ Converts Gregorian year to Hebrew year
 
 <a name="hebDateToGreg"></a>
 
-## hebDateToGreg(year, month, day) ⇒ <code>{year: number, month: number, day: number }</code>
+## hebDateToGreg(year, month, day) ⇒ <code>{year, month, day}</code>
 
 Convert Hebrew date to Gregorian date
 
@@ -73,7 +98,7 @@ Convert Hebrew date to Gregorian date
 
 <a name="gregDateToHeb"></a>
 
-## gregDateToHeb(year, month, day) ⇒ <code>{year: number, month: number, day: number }</code>
+## gregDateToHeb(year, month, day) ⇒ <code>{year, month, day}</code>
 
 Convert Gregorian date to Hebrew date
 
