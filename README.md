@@ -23,27 +23,27 @@ Clendrical Calculator was created in 2021 and programed in javasciprt but didn't
 <dd><p>Convert Gregorian date to Hebrew date.</p>
 </dd>
 
-<dt><a href="#Gregorian.fixedToGreg">Gregorian.fixedToGreg(number)</a> ⇒ <code>{year: number, month: number, day: number }</code></dt>
+<dt><a href="#fixedToGreg">Gregorian.fixedToGreg(number)</a> ⇒ <code>{year: number, month: number, day: number }</code></dt>
 <dd><p>Converts R.D. (Rata Die) to Gregorian date.</p>
 </dd>
 
-<dt><a href="#Gregorian.gregToFixed">Gregorian.gregToFixed(year, month, day)</a> ⇒ <code>number</code></dt>
+<dt><a href="#gregToFixed">Gregorian.gregToFixed(year, month, day)</a> ⇒ <code>number</code></dt>
 <dd><p>Converts Gregorian date to R.D. (Rata Die) fixed days.</p>
 </dd>
 
-<dt><a href="#Hebrew.fixedToHeb">Hebrew.fixedToHeb(number)</a> ⇒ <code>{year: number, month: number, day: number }</code></dt>
+<dt><a href="#fixedToHeb">Hebrew.fixedToHeb(number)</a> ⇒ <code>{year: number, month: number, day: number }</code></dt>
 <dd><p>Converts R.D. (Rata Die) to Hebrew  date.</p>
 </dd>
 
-<dt><a href="#Hebrew.hebToFixed">Hebrew.hebToFixed(year, month, day)</a> ⇒ <code>number</code></dt>
+<dt><a href="#hebToFixed">Hebrew.hebToFixed(year, month, day)</a> ⇒ <code>number</code></dt>
 <dd><p>Converts Hebrew date to R.D. (Rata Die) fixed days.</p>
 </dd>
 
-<dt><a href="#Hebrew.numberToGematria">Hebrew.numberToGematria(year, month, day)</a> ⇒ <code>number</code></dt>
+<dt><a href="#numberToGematria">Hebrew.numberToGematria(year, month, day)</a> ⇒ <code>number</code></dt>
 <dd><p>Converts number to his gematria value.</p>
 </dd>
 
-<dt><a href="#Hebrew.gematriaToNumber">Hebrew.gematriaToNumber(year, month, day)</a> ⇒ <code>number</code></dt>
+<dt><a href="#gematriaToNumber">Hebrew.gematriaToNumber(year, month, day)</a> ⇒ <code>number</code></dt>
 <dd><p>Converts gematria to his number value.</p>
 </dd>
 
@@ -164,7 +164,7 @@ Map(10) {
 **/
 ```
 
-<a name="Gregorian.fixedToGreg"></a>
+<a name="fixedToGreg"></a>
 
 ## Gregorian.fixedToGreg(year) ⇒ <code>number</code>
 
@@ -174,7 +174,7 @@ Converts R.D. (Rata Die) to Gregorian date.
 | ----- | ------------------- | -------------- |
 | year  | <code>number</code> | Gregorian year |
 
-<a name="Gregorian.gregToFixed"></a>
+<a name="gregToFixed"></a>
 
 ## Gregorian.gregToFixed(year) ⇒ <code>number</code>
 
@@ -184,7 +184,7 @@ Converts Gregorian date to R.D. (Rata Die) fixed days.
 | ----- | ------------------- | -------------- |
 | year  | <code>number</code> | Gregorian year |
 
-<a name="Hebrew.fixedToHeb"></a>
+<a name="fixedToHeb"></a>
 
 ## Hebrew.fixedToHeb(year) ⇒ <code>number</code>
 
@@ -194,7 +194,7 @@ Converts R.D. (Rata Die) to Hebrew date.
 | ----- | ------------------- | -------------- |
 | year  | <code>number</code> | Gregorian year |
 
-<a name="Hebrew.hebToFixed"></a>
+<a name="hebToFixed"></a>
 
 ## Hebrew.hebToFixed(year) ⇒ <code>number</code>
 
@@ -204,7 +204,7 @@ Converts Hebrew date to R.D. (Rata Die) fixed days.
 | ----- | ------------------- | -------------- |
 | year  | <code>number</code> | Gregorian year |
 
-<a name="Hebrew.numberToGematria"></a>
+<a name="numberToGematria"></a>
 
 ## Hebrew.numberToGematria(number) ⇒ <code>gematria</code>
 
@@ -214,7 +214,7 @@ Converts number to his gematria value.
 | ------ | ------------------- | --------------------------------- |
 | number | <code>number</code> | the number to convert to gematria |
 
-<a name="Hebrew.gematriaToNumber"></a>
+<a name="gematriaToNumber"></a>
 
 ## Hebrew.gematriaToNumber(gematria) ⇒ <code>number</code>
 
