@@ -123,6 +123,7 @@ Number of months in this Hebrew year (either 12 or 13 depending on leap year)
 | year  | <code>number</code> | Hebrew year |
 
 **Returns**: <code>Map object</code> - in the map object each key is the value of the month in Gregorian calendar and inside each entry there is another Map Object were each date value is the key
+
 **Example**
 
 ```js
