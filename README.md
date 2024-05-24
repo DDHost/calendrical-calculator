@@ -8,16 +8,43 @@ Clendrical Calculator was created in 2021 and programed in javasciprt but didn't
 
 <dl>
 <dt><a href="#gregYearToHebYear">gregYearToHebYear(year)</a> ⇒ <code>number</code></dt>
-<dd><p>Converts Gregorian year to Hebrew year</p>
+<dd><p>Converts Gregorian year to Hebrew year.</p>
 </dd>
+
 <dt><a href="#hebDateToGreg">hebDateToGreg(year, month, day)</a> ⇒ <code>{year: number, month: number, day: number }</code></dt>
-<dd><p>Convert Hebrew date to Gregorian date</p>
+<dd><p>Convert Hebrew date to Gregorian date.</p>
 </dd>
+
 <dt><a href="#gregDateToHeb">gregDateToHeb(year, month, day)</a> ⇒ <code>{year: number, month: number, day: number }</code></dt>
-<dd><p>Convert Gregorian date to Hebrew date</p>
+<dd><p>Convert Gregorian date to Hebrew date.</p>
 </dd>
+
 <dt><a href="#getFullYearJewishHoAInGregorian">getFullYearJewishHoAInGregorian(year, month, day)</a> ⇒ <code>Map Object()</code></dt>
-<dd><p>Convert Gregorian date to Hebrew date</p>
+<dd><p>Convert Gregorian date to Hebrew date.</p>
+</dd>
+
+<dt><a href="#Gregorian.fixedToGreg">Gregorian.fixedToGreg(number)</a> ⇒ <code>{year: number, month: number, day: number }</code></dt>
+<dd><p>Converts R.D. (Rata Die) to Gregorian date.</p>
+</dd>
+
+<dt><a href="#Gregorian.gregToFixed">Gregorian.gregToFixed(year, month, day)</a> ⇒ <code>number</code></dt>
+<dd><p>Converts Gregorian date to R.D. (Rata Die) fixed days.</p>
+</dd>
+
+<dt><a href="#Hebrew.fixedToHeb">Hebrew.fixedToHeb(number)</a> ⇒ <code>{year: number, month: number, day: number }</code></dt>
+<dd><p>Converts R.D. (Rata Die) to Hebrew  date.</p>
+</dd>
+
+<dt><a href="#Hebrew.hebToFixed">Hebrew.hebToFixed(year, month, day)</a> ⇒ <code>number</code></dt>
+<dd><p>Converts Hebrew date to R.D. (Rata Die) fixed days.</p>
+</dd>
+
+<dt><a href="#Hebrew.numberToGematria">Hebrew.numberToGematria(year, month, day)</a> ⇒ <code>number</code></dt>
+<dd><p>Converts number to his gematria value.</p>
+</dd>
+
+<dt><a href="#Hebrew.gematriaToNumber">Hebrew.gematriaToNumber(year, month, day)</a> ⇒ <code>number</code></dt>
+<dd><p>Converts gematria to his number value.</p>
 </dd>
 
 <a name="gregYearToHebYear"></a>
@@ -71,7 +98,6 @@ Number of months in this Hebrew year (either 12 or 13 depending on leap year)
 | year  | <code>number</code> | Hebrew year |
 
 **Returns**: <code>Map object</code> - in the map object each key is the value of the month in Gregorian calendar and inside the each entry there is another Map Object were which each date value is the key
-
 **Example**
 
 ```js
@@ -137,3 +163,63 @@ Map(10) {
 }
 **/
 ```
+
+<a name="Gregorian.fixedToGreg"></a>
+
+## Gregorian.fixedToGreg(year) ⇒ <code>number</code>
+
+Converts R.D. (Rata Die) to Gregorian date.
+
+| Param | Type                | Description    |
+| ----- | ------------------- | -------------- |
+| year  | <code>number</code> | Gregorian year |
+
+<a name="Gregorian.gregToFixed"></a>
+
+## Gregorian.gregToFixed(year) ⇒ <code>number</code>
+
+Converts Gregorian date to R.D. (Rata Die) fixed days.
+
+| Param | Type                | Description    |
+| ----- | ------------------- | -------------- |
+| year  | <code>number</code> | Gregorian year |
+
+<a name="Hebrew.fixedToHeb"></a>
+
+## Hebrew.fixedToHeb(year) ⇒ <code>number</code>
+
+Converts R.D. (Rata Die) to Hebrew date.
+
+| Param | Type                | Description    |
+| ----- | ------------------- | -------------- |
+| year  | <code>number</code> | Gregorian year |
+
+<a name="Hebrew.hebToFixed"></a>
+
+## Hebrew.hebToFixed(year) ⇒ <code>number</code>
+
+Converts Hebrew date to R.D. (Rata Die) fixed days.
+
+| Param | Type                | Description    |
+| ----- | ------------------- | -------------- |
+| year  | <code>number</code> | Gregorian year |
+
+<a name="Hebrew.numberToGematria"></a>
+
+## Hebrew.numberToGematria(number) ⇒ <code>gematria</code>
+
+Converts number to his gematria value.
+
+| Param  | Type                | Description                       |
+| ------ | ------------------- | --------------------------------- |
+| number | <code>number</code> | the number to convert to gematria |
+
+<a name="Hebrew.gematriaToNumber"></a>
+
+## Hebrew.gematriaToNumber(gematria) ⇒ <code>number</code>
+
+Converts gematria to his number value.
+
+| Param    | Type                | Description                         |
+| -------- | ------------------- | ----------------------------------- |
+| gematria | <code>string</code> | the gematria to convert to gematria |

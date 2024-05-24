@@ -220,4 +220,4 @@ const getHoA = (hYear) => {
     return fullYear;
 };
 
-export { fixedToHeb, hebToFixed, hebrewMonths, getHoA, weeksName };
+export { fixedToHeb, hebToFixed, hebrewMonths, getHoA, weeksName, numberToGematria, gematriaToNumber };

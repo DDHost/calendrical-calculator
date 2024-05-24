@@ -66,11 +66,6 @@ const getFullYearJewishHoAInGregorian = (year) => {
                 const MONTH_ID = date.month;
                 const DAY_ID = date.day;
 
-                /*   date = Object.values(date)
-                    .map((val) => (val > 10 ? val : '0' + val))
-                    .reverse()
-                    .join('-'); // join the object to date format like 1-1-2024. */
-
                 const formatHoA = { name: HoA.name, type: HoA.type };
                 let list = fullGregYear.get(MONTH_ID);
                 if (list) list.set(DAY_ID, formatHoA);
@@ -96,4 +91,4 @@ const weeksName = {
     he: Hebrew.weeksName,
 };
 
-export { getFullYearJewishHoAInGregorian, weeksName, monthsName };
+export { getFullYearJewishHoAInGregorian, gregYearToHebYear, gregDateToHeb, hebDateToGreg, Hebrew, Gregorian, weeksName, monthsName };
