@@ -2,26 +2,18 @@
 /// Hybrid
 ///
 
-import * as Hebrew from './calendars/hebrew/heb.js';
-import * as gregorian from './calendars/gregorian/greg.js';
+import * as Hebrew from './heb/hebdate.js';
+import * as Gregorian from './greg/gregdate.js';
+import { Cache } from './cache.js';
 
-// List of month name
-const monthsName = {
-    en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Novermber', 'December'],
-    he: ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'],
-};
-
-const weeksName = {
-    en: [`Su`, `Mo`, `Tu`, `We`, `Th`, `Fr`, `Sa`],
-    he: [`יום א'`, `יום ב'`, `יום ג'`, `יום ד'`, `יום ה'`, `יום ו'`, `שבת`],
-};
+const hebMonth = new Hebrew.hebrewMonths();
 
 /**
  * Gregorian year to Hebrew year
  * @param {number} year Gregorian year
  * @return {number} Hebrew year
  */
-const gregYearToHebYear = (year) => year - 1240 + 5000;
+const gregYearToHebYear = (year) => year + 3760;
 
 /**
  * Convert Hebrew date to Gregorian date.
@@ -30,7 +22,7 @@ const gregYearToHebYear = (year) => year - 1240 + 5000;
  * @param {number} day Hebrew day
  * @returns {object} Gregorian date = {year, month, day}
  */
-const hebDateToGreg = (year, month, day) => gregorian.fixedToGreg(Hebrew.hebToFixed(parseInt(year), parseInt(month), parseInt(day)));
+const hebDateToGreg = (year, month, day) => Gregorian.fixedToGreg(Hebrew.hebToFixed(parseInt(year), parseInt(month), parseInt(day)));
 
 /**
  * Convert Gregorian date to Hebrew date.
@@ -39,80 +31,64 @@ const hebDateToGreg = (year, month, day) => gregorian.fixedToGreg(Hebrew.hebToFi
  * @param {number} day Gregorian day
  * @returns {object} Hebrew date = {year, month, day}
  */
-const gregDateToHeb = (year, month, day) => Hebrew.fixedToheb(gregorian.gregToFixed(parseInt(year), parseInt(month), parseInt(day)));
+const gregDateToHeb = (year, month, day) => Hebrew.fixedToHeb(Gregorian.gregToFixed(parseInt(year), parseInt(month), parseInt(day)));
+
+const cachedHoA = new Cache(10);
 
 /**
- * Get jewish holidays by given month & year
+ * Get all jewish holidays and occasions in the given Gregorian year
  * @param {number} year Gregorian year
- * @param {number} month Gregorian month
  * @returns {Array<object>} Holidays
  */
-const jewHoliByGreg = (year, month) => {
-    // Length of the Gregorian month.
-    const max = new Date(year, month, 0).getDate();
+const getFullYearJewishHoAInGregorian = (year) => {
+    // Cached year
+    if (cachedHoA.isCached(year)) return cachedHoA.get(year);
 
-    const start = gregDateToHeb(year, month, 1); // The start date in Hebrew.
-    const end = gregDateToHeb(year, month, max); // The end date in Hebrew.
+    /**
+     * The Gregorian year consists of two halves of Hebrew years
+     * so you have to calculate both 2 year to get all holidays and occasions in full Gregorian year.
+     */
+    const yearRange = [gregDateToHeb(year, 1, 1), gregDateToHeb(year, 12, 31)];
 
-    let holidays = [];
-    holidays.push({
-        date: start,
-        holidays: Hebrew.getHolidays(start.year, start.month).filter((h) => Hebrew.gimatriaToNumber(h.sdate) >= start.day),
+    // Holidays and Occasions of each year
+    const sHoA = Hebrew.getHoA(yearRange[0].year);
+    const eHoA = Hebrew.getHoA(yearRange[1].year);
+
+    const fullGregYear = new Map();
+
+    [sHoA, eHoA].forEach((fullHebYear, index) => {
+        for (let month in fullHebYear.months) {
+            fullHebYear.months[month].HoA.forEach((HoA) => {
+                let date = hebDateToGreg(yearRange[index].year, hebMonth.monthsValue.get(month), HoA.date);
+
+                if (date.year != year) return;
+
+                const MONTH_ID = date.month;
+                const DAY_ID = date.day;
+
+                const formatHoA = { name: HoA.name, type: HoA.type };
+                let list = fullGregYear.get(MONTH_ID);
+                if (list) list.set(DAY_ID, formatHoA);
+                else {
+                    list = new Map();
+                    list.set(DAY_ID, formatHoA);
+                    fullGregYear.set(MONTH_ID, list);
+                }
+            });
+        }
     });
 
-    // If Hebrew month is ends before the Gregorian month,
-    // Then add the next month holidays (padding).
-    if (start.month !== end.month) {
-        let h = Hebrew.getHolidays(end.year, end.month).filter((holi) => Hebrew.gimatriaToNumber(holi.sdate) <= end.day);
-        holidays.push({
-            date: end,
-            holidays: h,
-        });
-    }
+    // Cache the year
+    cachedHoA.add(year, fullGregYear);
 
-    return holidays;
+    return fullGregYear;
 };
 
-// Function to convert Hebrew date to English day of the week
-// Return the name of the day of the week
-const convertHebrewDateToDayOfWeek = (year, month, day) => new Date(Object.values(hebDateToGreg(year, month, day)).join('-')).getDay();
+const monthsName = Gregorian.monthsName;
 
-/**
- * Get jewish holidays by given month & year
- * And fixed the dates to Gregorian format.
- * @param {number} year Gregorian year
- * @param {number} month Gregorian month
- * @returns {Array<object>} Holidays
- */
-const jewHoliByGregFix = (year, month) => {
-    let holidays = jewHoliByGreg(year, month);
-
-    let newHolidays = [];
-    holidays.forEach((month) => {
-        month.holidays.forEach((h) => {
-            // fix delay if exist
-            if (h.delay) {
-                h.delay.forEach((delay) => {
-                    for (let i = 0; i < delay.day.length; i++) {
-                        let dayOfWeek = convertHebrewDateToDayOfWeek(month.date.year, month.date.month, Hebrew.gimatriaToNumber(h.sdate));
-                        if (!delay.day.includes(dayOfWeek)) continue;
-                        h.sdate = Hebrew.numberToGimatria(Hebrew.gimatriaToNumber(h.sdate) + delay.add);
-                        if (h.len > 1) h.edate = Hebrew.numberToGimatria(Hebrew.gimatriaToNumber(h.edate) + delay.add);
-                        else h.edate = h.sdate;
-                    }
-                });
-            }
-            let Start = hebDateToGreg(month.date.year, month.date.month, Hebrew.gimatriaToNumber(h.sdate));
-            let End = hebDateToGreg(month.date.year, month.date.month, Hebrew.gimatriaToNumber(h.edate));
-            h.sdate = Object.values(Start).join('-');
-            h.edate = Object.values(End).join('-');
-        });
-
-        newHolidays = [...newHolidays, ...month.holidays];
-    });
-
-    return newHolidays;
+const weeksName = {
+    en: Gregorian.weeksName,
+    he: Hebrew.weeksName,
 };
 
-// EXPORT
-export { jewHoliByGreg, gregDateToHeb, hebDateToGreg, gregYearToHebYear, jewHoliByGregFix, monthsName, weeksName };
+export { getFullYearJewishHoAInGregorian, gregYearToHebYear, gregDateToHeb, hebDateToGreg, Hebrew, Gregorian, weeksName, monthsName };
